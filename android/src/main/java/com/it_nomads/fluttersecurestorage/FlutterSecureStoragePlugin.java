@@ -59,8 +59,6 @@ public class FlutterSecureStoragePlugin implements MethodCallHandler, FlutterPlu
           workerThread.start();
           workerThreadHandler = new Handler(workerThread.getLooper());
 
-          StorageCipher18Implementation.moveSecretFromPreferencesIfNeeded(preferences, context);
-
           channel = new MethodChannel(messenger, "plugins.it_nomads.com/flutter_secure_storage");
           channel.setMethodCallHandler(this);
       } catch (Exception e) {

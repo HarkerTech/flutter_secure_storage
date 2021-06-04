@@ -26,7 +26,6 @@ public class StorageCipher18Implementation implements StorageCipher {
     // Backwards compatibility
     private static final String USE_AES_KEY = "essentials_use_symmetric";
     private static final String AES_PREFERENCES_KEY = "VGhpcyBpcyB0aGUga2V5IGZvciBhIHNlY3VyZSBzdG9yYWdlIEFFUyBLZXkK";
-    private static final String SHARED_PREFERENCES_NAME_OLD = "FlutterSecureKeyStorage";
     // Backwards compatibility
     private final String SHARED_PREFERENCES_NAME;
 
@@ -122,21 +121,4 @@ public class StorageCipher18Implementation implements StorageCipher {
 
         return cipher.doFinal(payload);
     }
-
-    public static void moveSecretFromPreferencesIfNeeded(SharedPreferences oldPreferences, Context context) {
-        String existedSecretKey = oldPreferences.getString(AES_PREFERENCES_KEY, null);
-        if (existedSecretKey == null) {
-            return;
-        }
-
-        SharedPreferences.Editor oldEditor = oldPreferences.edit();
-        oldEditor.remove(AES_PREFERENCES_KEY);
-        oldEditor.commit();
-
-        SharedPreferences newPreferences = context.getSharedPreferences(SHARED_PREFERENCES_NAME_OLD, Context.MODE_PRIVATE);
-        SharedPreferences.Editor newEditor = newPreferences.edit();
-        newEditor.putString(AES_PREFERENCES_KEY, existedSecretKey);
-        newEditor.commit();
-    }
-
 }
