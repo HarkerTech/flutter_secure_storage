@@ -41,7 +41,8 @@ public class FlutterSecureStoragePlugin implements MethodCallHandler, FlutterPlu
     private Handler workerThreadHandler;
 
     private static final String ELEMENT_PREFERENCES_KEY_PREFIX = "VGhpcyBpcyB0aGUgcHJlZml4IGZvciBhIHNlY3VyZSBzdG9yYWdlCg";
-    private static final String SHARED_PREFERENCES_NAME = "FlutterSecureStorage";
+    // Backwards compatibility
+    private static final String SHARED_PREFERENCES_NAME = "com.HRWDevelopments.QuipCheck.xamarinessentials";
 
     public static void registerWith(Registrar registrar) {
       FlutterSecureStoragePlugin instance = new FlutterSecureStoragePlugin();
@@ -103,7 +104,9 @@ public class FlutterSecureStoragePlugin implements MethodCallHandler, FlutterPlu
     private String getKeyFromCall(MethodCall call) {
         Map arguments = (Map) call.arguments;
         String rawKey = (String) arguments.get("key");
-        String key = addPrefixToKey(rawKey);
+        // Backwards compatibility
+        // String key = addPrefixToKey(rawKey);
+        String key = rawKey;
         return key;
     }
 
@@ -113,11 +116,17 @@ public class FlutterSecureStoragePlugin implements MethodCallHandler, FlutterPlu
 
         Map<String, String> all = new HashMap<>();
         for (Map.Entry<String, String> entry : raw.entrySet()) {
-            String key = entry.getKey().replaceFirst(ELEMENT_PREFERENCES_KEY_PREFIX + '_', "");
-            String rawValue = entry.getValue();
-            String value = decodeRawValue(rawValue);
+            String key = entry.getKey();
+            try {
+                String rawValue = entry.getValue();
+                String value = decodeRawValue(rawValue);
 
-            all.put(key, value);
+                all.put(key, value);
+            } catch  (ClassCastException e) {
+                // Backwards compatibility
+                // Essentials inserted a boolean which is not supported by the plugin
+                Log.w(TAG, String.format("Read all cast to string failed for key '%s'", key));
+            }
         }
         return all;
     }
