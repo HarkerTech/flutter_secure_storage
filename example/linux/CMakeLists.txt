@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 project(runner LANGUAGES CXX)
 
-set(BINARY_NAME "flutter_secure_storage_example")
-set(APPLICATION_ID "com.it_nomads.flutter_secure_storage")
+set(BINARY_NAME "migrate_flutter_secure_storage_example")
+set(APPLICATION_ID "com.harkertech.migrate_flutter_secure_storage")
 
 cmake_policy(SET CMP0063 NEW)
 

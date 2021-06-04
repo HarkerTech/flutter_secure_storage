@@ -3,11 +3,11 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
-class FlutterSecureStorage {
-  const FlutterSecureStorage();
+class MigrateFlutterSecureStorage {
+  const MigrateFlutterSecureStorage();
 
   static const MethodChannel _channel =
-      const MethodChannel('plugins.it_nomads.com/flutter_secure_storage');
+      const MethodChannel('plugins.harkertech.com/migrate_flutter_secure_storage');
 
   /// Encrypts and saves the [key] with the given [value].
   ///
@@ -175,7 +175,7 @@ class IOSOptions extends Options {
         _accessibility = accessibility,
         _accountName = accountName;
 
-  static const defaultAccountName = 'flutter_secure_storage_service';
+  static const defaultAccountName = 'migrate_flutter_secure_storage_service';
 
   static const IOSOptions defaultOptions = IOSOptions();
 

@@ -1,16 +1,16 @@
-#import "FlutterSecureStoragePlugin.h"
+#import "MigrateFlutterSecureStoragePlugin.h"
 
-static NSString *const CHANNEL_NAME = @"plugins.it_nomads.com/flutter_secure_storage";
+static NSString *const CHANNEL_NAME = @"plugins.harkertech.com/migrate_flutter_secure_storage";
 
 static NSString *const InvalidParameters = @"Invalid parameter's type";
 
-@interface FlutterSecureStoragePlugin()
+@interface MigrateFlutterSecureStoragePlugin()
 
 @property (strong, nonatomic) NSDictionary *query;
 
 @end
 
-@implementation FlutterSecureStoragePlugin
+@implementation MigrateFlutterSecureStoragePlugin
 
 - (instancetype)init {
     self = [super init];
@@ -26,7 +26,7 @@ static NSString *const InvalidParameters = @"Invalid parameter's type";
     FlutterMethodChannel* channel = [FlutterMethodChannel
                                      methodChannelWithName:CHANNEL_NAME
                                      binaryMessenger:[registrar messenger]];
-    FlutterSecureStoragePlugin* instance = [[FlutterSecureStoragePlugin alloc] init];
+    MigrateFlutterSecureStoragePlugin* instance = [[MigrateFlutterSecureStoragePlugin alloc] init];
     [registrar addMethodCallDelegate:instance channel:channel];
 }
 

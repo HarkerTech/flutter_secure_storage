@@ -1,4 +1,4 @@
-package com.it_nomads.fluttersecurestorage;
+package com.harkertech.migratefluttersecurestorage;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,8 +9,8 @@ import android.os.Looper;
 import android.util.Base64;
 import android.util.Log;
 
-import com.it_nomads.fluttersecurestorage.ciphers.StorageCipher;
-import com.it_nomads.fluttersecurestorage.ciphers.StorageCipher18Implementation;
+import com.harkertech.migratefluttersecurestorage.ciphers.StorageCipher;
+import com.harkertech.migratefluttersecurestorage.ciphers.StorageCipher18Implementation;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -27,9 +27,9 @@ import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 
 @SuppressLint("ApplySharedPref")
-public class FlutterSecureStoragePlugin implements MethodCallHandler, FlutterPlugin {
+public class MigrateFlutterSecureStoragePlugin implements MethodCallHandler, FlutterPlugin {
 
-    private static final String TAG = "FlutterSecureStoragePl";
+    private static final String TAG = "MigrateFlutterSecureStoragePl";
 
     private MethodChannel channel;
     private SharedPreferences preferences;
@@ -45,7 +45,7 @@ public class FlutterSecureStoragePlugin implements MethodCallHandler, FlutterPlu
     private static final String SHARED_PREFERENCES_NAME = "com.HRWDevelopments.QuipCheck.xamarinessentials";
 
     public static void registerWith(Registrar registrar) {
-      FlutterSecureStoragePlugin instance = new FlutterSecureStoragePlugin();
+      MigrateFlutterSecureStoragePlugin instance = new MigrateFlutterSecureStoragePlugin();
       instance.initInstance(registrar.messenger(), registrar.context());
     }
 
@@ -55,11 +55,11 @@ public class FlutterSecureStoragePlugin implements MethodCallHandler, FlutterPlu
           preferences = context.getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE);
           charset = Charset.forName("UTF-8");
 
-          workerThread = new HandlerThread("com.it_nomads.fluttersecurestorage.worker");
+          workerThread = new HandlerThread("com.harkertech.migratefluttersecurestorage.worker");
           workerThread.start();
           workerThreadHandler = new Handler(workerThread.getLooper());
 
-          channel = new MethodChannel(messenger, "plugins.it_nomads.com/flutter_secure_storage");
+          channel = new MethodChannel(messenger, "plugins.harkertech.migrate.com/migrate_flutter_secure_storage");
           channel.setMethodCallHandler(this);
       } catch (Exception e) {
           Log.e(TAG, "Registration failed", e);

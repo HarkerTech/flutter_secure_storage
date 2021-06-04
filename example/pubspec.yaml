@@ -1,5 +1,5 @@
-name: flutter_secure_storage_example
-description: Demonstrates how to use the flutter_secure_storage plugin.
+name: migrate_flutter_secure_storage_example
+description: Demonstrates how to use the migrate_flutter_secure_storage plugin.
 
 environment:
   sdk: '>=2.12.0-29.10.beta <3.0.0'
@@ -8,7 +8,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_secure_storage:
+  migrate_flutter_secure_storage:
     path: ../
 
 dev_dependencies:

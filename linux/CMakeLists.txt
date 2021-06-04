@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 3.10)
-set(PROJECT_NAME "flutter_secure_storage")
+set(PROJECT_NAME "migrate_flutter_secure_storage")
 project(${PROJECT_NAME} LANGUAGES CXX)
 
 # This value is used when generating builds using this plugin, so it must
 # not be changed
-set(PLUGIN_NAME "flutter_secure_storage_plugin")
+set(PLUGIN_NAME "migrate_flutter_secure_storage_plugin")
 
 add_library(${PLUGIN_NAME} SHARED
-  "flutter_secure_storage_plugin.cc"
+  "migrate_flutter_secure_storage_plugin.cc"
 )
 apply_standard_settings(${PLUGIN_NAME})
 pkg_check_modules(LIBSECRET REQUIRED IMPORTED_TARGET libsecret-1>=0.18.4)
@@ -29,7 +29,7 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE PkgConfig::LIBSECRET)
 target_link_libraries(${PLUGIN_NAME} PRIVATE PkgConfig::JSONCPP)
 
 # List of absolute paths to libraries that should be bundled with the plugin
-set(flutter_secure_storage_bundled_libraries
+set(migrate_flutter_secure_storage_bundled_libraries
   ""
   PARENT_SCOPE
 )

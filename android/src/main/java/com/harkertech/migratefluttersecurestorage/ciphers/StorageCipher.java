@@ -1,4 +1,4 @@
-package com.it_nomads.fluttersecurestorage.ciphers;
+package com.harkertech.migratefluttersecurestorage.ciphers;
 
 public interface StorageCipher {
   byte[] encrypt(byte[] input) throws Exception;

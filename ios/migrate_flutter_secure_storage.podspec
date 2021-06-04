@@ -2,7 +2,7 @@
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
 #
 Pod::Spec.new do |s|
-  s.name             = 'flutter_secure_storage'
+  s.name             = 'migrate_flutter_secure_storage'
   s.version          = '3.3.1'
   s.summary          = 'A new flutter plugin project.'
   s.description      = <<-DESC

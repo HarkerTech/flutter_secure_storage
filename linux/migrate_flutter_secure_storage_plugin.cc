@@ -1,4 +1,4 @@
-#include "include/flutter_secure_storage/flutter_secure_storage_plugin.h"
+#include "include/migrate_flutter_secure_storage/migrate_flutter_secure_storage_plugin.h"
 #include "include/Secret.hpp"
 
 #include <cstring>
@@ -8,15 +8,15 @@
 #include <libsecret/secret.h>
 #include <sys/utsname.h>
 
-#define FLUTTER_SECURE_STORAGE_PLUGIN(obj)                                     \
-  (G_TYPE_CHECK_INSTANCE_CAST((obj), flutter_secure_storage_plugin_get_type(), \
-                              FlutterSecureStoragePlugin))
+#define MIGRATE_FLUTTER_SECURE_STORAGE_PLUGIN(obj)                                     \
+  (G_TYPE_CHECK_INSTANCE_CAST((obj), migrate_flutter_secure_storage_plugin_get_type(), \
+                              MigrateFlutterSecureStoragePlugin))
 
-struct _FlutterSecureStoragePlugin {
+struct _MigrateFlutterSecureStoragePlugin {
   GObject parent_instance;
 };
 
-G_DEFINE_TYPE(FlutterSecureStoragePlugin, flutter_secure_storage_plugin,
+G_DEFINE_TYPE(MigrateFlutterSecureStoragePlugin, migrate_flutter_secure_storage_plugin,
               g_object_get_type())
 
 static SecretStorage keyring;
@@ -46,8 +46,8 @@ FlValue *readAll() {
 }
 
 // Called when a method call is received from Flutter.
-static void flutter_secure_storage_plugin_handle_method_call(
-    FlutterSecureStoragePlugin *self, FlMethodCall *method_call) {
+static void migrate_flutter_secure_storage_plugin_handle_method_call(
+    MigrateFlutterSecureStoragePlugin *self, FlMethodCall *method_call) {
   g_autoptr(FlMethodResponse) response = nullptr;
 
   const gchar *method = fl_method_call_get_name(method_call);
@@ -109,37 +109,37 @@ static void flutter_secure_storage_plugin_handle_method_call(
   }
 }
 
-static void flutter_secure_storage_plugin_dispose(GObject *object) {
-  G_OBJECT_CLASS(flutter_secure_storage_plugin_parent_class)->dispose(object);
+static void migrate_flutter_secure_storage_plugin_dispose(GObject *object) {
+  G_OBJECT_CLASS(migrate_flutter_secure_storage_plugin_parent_class)->dispose(object);
 }
 
-static void flutter_secure_storage_plugin_class_init(
-    FlutterSecureStoragePluginClass *klass) {
-  G_OBJECT_CLASS(klass)->dispose = flutter_secure_storage_plugin_dispose;
+static void migrate_flutter_secure_storage_plugin_class_init(
+    MigrateFlutterSecureStoragePluginClass *klass) {
+  G_OBJECT_CLASS(klass)->dispose = migrate_flutter_secure_storage_plugin_dispose;
 }
 
 static void
-flutter_secure_storage_plugin_init(FlutterSecureStoragePlugin *self) {}
+migrate_flutter_secure_storage_plugin_initMigrateFlutterSecureStoragePlugin *self) {}
 
 static void method_call_cb(FlMethodChannel *channel, FlMethodCall *method_call,
                            gpointer user_data) {
-  FlutterSecureStoragePlugin *plugin = FLUTTER_SECURE_STORAGE_PLUGIN(user_data);
-  flutter_secure_storage_plugin_handle_method_call(plugin, method_call);
+  FlutterSecureStoragePlugin *plugin = MIGRATE_FLUTTER_SECURE_STORAGE_PLUGIN(user_data);
+  migrate_flutter_secure_storage_plugin_handle_method_call(plugin, method_call);
 }
 
-void flutter_secure_storage_plugin_register_with_registrar(
+void migrate_flutter_secure_storage_plugin_register_with_registrar(
     FlPluginRegistrar *registrar) {
-  FlutterSecureStoragePlugin *plugin = FLUTTER_SECURE_STORAGE_PLUGIN(
-      g_object_new(flutter_secure_storage_plugin_get_type(), nullptr));
+  MigrateFlutterSecureStoragePlugin *plugin = MIGRATE_FLUTTER_SECURE_STORAGE_PLUGIN(
+      g_object_new(migrate_flutter_secure_storage_plugin_get_type(), nullptr));
 
   g_autoptr(FlStandardMethodCodec) codec = fl_standard_method_codec_new();
   g_autoptr(FlMethodChannel) channel = fl_method_channel_new(
       fl_plugin_registrar_get_messenger(registrar),
-      "plugins.it_nomads.com/flutter_secure_storage", FL_METHOD_CODEC(codec));
+      "plugins.harkertech.com/migrate_flutter_secure_storage", FL_METHOD_CODEC(codec));
   fl_method_channel_set_method_call_handler(
       channel, method_call_cb, g_object_ref(plugin), g_object_unref);
   const gchar *label =
-      g_strdup_printf("%s/FlutterSecureStorage", APPLICATION_ID);
+      g_strdup_printf("%s/MigrateFlutterSecureStorage", APPLICATION_ID);
   const gchar *account = g_strdup_printf("%s.secureStorage", APPLICATION_ID);
   keyring.setLabel(label);
   keyring.addAttribute("account", account);

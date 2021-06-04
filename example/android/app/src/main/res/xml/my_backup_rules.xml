@@ -2,5 +2,5 @@
 <full-backup-content>
     <exclude
         domain="sharedpref"
-        path="FlutterSecureStorage" />
+        path="MigrateFlutterSecureStorage" />
 </full-backup-content>

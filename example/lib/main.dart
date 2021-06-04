@@ -3,7 +3,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:migrate_flutter_secure_storage/migrate_flutter_secure_storage.dart';
 
 void main() {
   runApp(MaterialApp(home: ItemsWidget()));
@@ -18,9 +18,9 @@ enum _Actions { deleteAll }
 enum _ItemActions { delete, edit }
 
 class _ItemsWidgetState extends State<ItemsWidget> {
-  final _storage = FlutterSecureStorage();
+  final _storage = MigrateFlutterSecureStorage();
   final _accountNameController =
-      TextEditingController(text: 'flutter_secure_storage_service');
+      TextEditingController(text: 'migrate_flutter_secure_storage_service');
 
   List<_SecItem> _items = [];
 

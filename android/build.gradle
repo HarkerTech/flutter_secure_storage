@@ -1,4 +1,4 @@
-group 'com.it_nomads.fluttersecurestorage'
+group 'com.harkertech.migratefluttersecurestorage'
 version '1.0-SNAPSHOT'
 
 buildscript {

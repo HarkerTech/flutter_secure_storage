@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.it_nomads.fluttersecurestorageexample">
+          package="com.harkertech.migratefluttersecurestorageexample">
 
     <!-- The INTERNET permission is required for development. Specifically,
          flutter needs it to communicate with the running application
@@ -12,7 +12,7 @@
          In most cases you can leave this as-is, but you if you want to provide
          additional functionality it is fine to subclass or reimplement
          FlutterApplication and put your custom class here. -->
-    <application android:label="flutter_secure_storage_example" android:icon="@mipmap/ic_launcher"
+    <application android:label="migrate_flutter_secure_storage_example" android:icon="@mipmap/ic_launcher"
                  android:allowBackup="false" android:fullBackupContent="@xml/my_backup_rules">
         <activity android:name=".MainActivity"
                   android:launchMode="singleTop"

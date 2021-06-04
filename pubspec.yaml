@@ -11,12 +11,12 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.it_nomads.fluttersecurestorage
-        pluginClass: FlutterSecureStoragePlugin
+        package: com.harkertech.migratefluttersecurestorage
+        pluginClass: MigrateFlutterSecureStoragePlugin
       ios:
-        pluginClass: FlutterSecureStoragePlugin
+        pluginClass: MigrateFlutterSecureStoragePlugin
       linux:
-        pluginClass: FlutterSecureStoragePlugin
+        pluginClass: MigrateFlutterSecureStoragePlugin
 
 dependencies:
   meta: '^1.3.0'

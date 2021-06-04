@@ -1,4 +1,4 @@
-package com.it_nomads.fluttersecurestorageexample;
+package com.harkertech.migratefluttersecurestorageexample;
 
 import io.flutter.embedding.android.FlutterActivity;
 

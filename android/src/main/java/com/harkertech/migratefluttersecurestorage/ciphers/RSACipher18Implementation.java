@@ -1,4 +1,4 @@
-package com.it_nomads.fluttersecurestorage.ciphers;
+package com.harkertech.migratefluttersecurestorage.ciphers;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
