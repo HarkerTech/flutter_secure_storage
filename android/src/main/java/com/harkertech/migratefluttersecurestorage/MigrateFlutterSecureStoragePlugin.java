@@ -59,7 +59,7 @@ public class MigrateFlutterSecureStoragePlugin implements MethodCallHandler, Flu
           workerThread.start();
           workerThreadHandler = new Handler(workerThread.getLooper());
 
-          channel = new MethodChannel(messenger, "plugins.harkertech.migrate.com/migrate_flutter_secure_storage");
+          channel = new MethodChannel(messenger, "plugins.harkertech.com/migrate_flutter_secure_storage");
           channel.setMethodCallHandler(this);
       } catch (Exception e) {
           Log.e(TAG, "Registration failed", e);
